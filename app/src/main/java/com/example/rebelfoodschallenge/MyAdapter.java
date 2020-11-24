@@ -57,11 +57,10 @@ public MyAdapter(Context context , List<Model> modelList){
 
         if(modelList.get(position).getImage() != null) {
             Picasso.get().load(modelList.get(position).getImage()).into(holder.imageView);
-//            holder.progressBar.setVisibility(View.GONE);
         }
-        else {
-            holder.imageView.setVisibility(View.GONE);
-        }
+//        else {
+//            holder.imageView.setVisibility(View.GONE);
+//        }
 
     }
 
