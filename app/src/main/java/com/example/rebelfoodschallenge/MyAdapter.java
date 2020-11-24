@@ -57,7 +57,10 @@ public MyAdapter(Context context , List<Model> modelList){
 
         if(modelList.get(position).getImage() != null) {
             Picasso.get().load(modelList.get(position).getImage()).into(holder.imageView);
-            holder.progressBar.setVisibility(View.GONE);
+//            holder.progressBar.setVisibility(View.GONE);
+        }
+        else {
+            holder.imageView.setVisibility(View.GONE);
         }
 
     }
@@ -85,7 +88,7 @@ public MyAdapter(Context context , List<Model> modelList){
             style = itemView.findViewById(R.id.style);
             cardView = itemView.findViewById(R.id.cardview);
             imageView = itemView.findViewById(R.id.image);
-            progressBar = itemView.findViewById(R.id.progress);
+//            progressBar = itemView.findViewById(R.id.progress);
         }
     }
 

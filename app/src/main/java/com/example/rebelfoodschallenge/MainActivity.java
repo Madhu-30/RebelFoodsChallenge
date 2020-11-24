@@ -205,7 +205,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 int finalI = i;
 
-                                Model model = new Model();
+                                if(searchText.compareToIgnoreCase(jsonObject.getString("name")) == 0) {
+
+                                    Model model = new Model();
 
                                 model.setAbv(jsonObject.getString("abv"));
                                 model.setIbu(jsonObject.getString("ibu"));
@@ -213,43 +215,40 @@ public class MainActivity extends AppCompatActivity {
                                 model.setStyle(jsonObject.getString("style"));
                                 model.setName(jsonObject.getString("name"));
                                 model.setOunces(jsonObject.getDouble("ounces"));
-
-                                if(searchText.matches(jsonObject.getString("name"))) {
-                                    JsonArrayRequest jsonArrayRequest2 = new JsonArrayRequest(Request.Method.GET, newjsonURL, null,
-                                            new Response.Listener<JSONArray>() {
-                                                @Override
-                                                public void onResponse(JSONArray response1) {
-                                                    try {
-                                                        Log.i("Hiiiii", jsonObject.getString("ounces"));
-
-                                                        if (finalI % 5 == 0) {
-                                                            model.setImage(response1.getJSONObject(0).getString("image"));
-                                                        } else if (finalI % 5 == 1) {
-                                                            model.setImage(response1.getJSONObject(1).getString("image"));
-                                                        } else if (finalI % 5 == 2) {
-                                                            model.setImage(response1.getJSONObject(2).getString("image"));
-                                                        } else if (finalI % 5 == 3) {
-                                                            model.setImage(response1.getJSONObject(3).getString("image"));
-                                                        } else if (finalI % 5 == 4) {
-                                                            model.setImage(response1.getJSONObject(4).getString("image"));
-                                                        }
-
-//                                            }
-                                                    } catch (JSONException e) {
-                                                        Log.i("Hiii", "Something wrong 2nd link");
-                                                        e.printStackTrace();
-                                                    }
-
-                                                }
-                                            }, new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-
-                                        }
-                                    });
-
-                                    requestQueue1.add(jsonArrayRequest2);
-
+//                                    JsonArrayRequest jsonArrayRequest2 = new JsonArrayRequest(Request.Method.GET, newjsonURL, null,
+//                                            new Response.Listener<JSONArray>() {
+//                                                @Override
+//                                                public void onResponse(JSONArray response1) {
+//                                                    try {
+//                                                        Log.i("Hiiiii", jsonObject.getString("ounces"));
+//
+//                                                        if (finalI % 5 == 0) {
+//                                                            model.setImage(response1.getJSONObject(0).getString("image"));
+//                                                        } else if (finalI % 5 == 1) {
+//                                                            model.setImage(response1.getJSONObject(1).getString("image"));
+//                                                        } else if (finalI % 5 == 2) {
+//                                                            model.setImage(response1.getJSONObject(2).getString("image"));
+//                                                        } else if (finalI % 5 == 3) {
+//                                                            model.setImage(response1.getJSONObject(3).getString("image"));
+//                                                        } else if (finalI % 5 == 4) {
+//                                                            model.setImage(response1.getJSONObject(4).getString("image"));
+//                                                        }
+//
+////                                            }
+//                                                    } catch (JSONException e) {
+//                                                        Log.i("Hiii", "Something wrong 2nd link");
+//                                                        e.printStackTrace();
+//                                                    }
+//
+//                                                }
+//                                            }, new Response.ErrorListener() {
+//                                        @Override
+//                                        public void onErrorResponse(VolleyError error) {
+//
+//                                        }
+//                                    });
+//
+//                                    requestQueue1.add(jsonArrayRequest2);
                                     searchList.add(model);
                                     c = 1;
                                 }
